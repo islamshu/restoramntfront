@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -25,15 +24,20 @@ a {
     color: #fff;
 }
 
+
 /* Common Design */
+
 .responsive_box {
     max-width: 500px;
     min-width: 360px;
 }
 
+
 /* Common Design */
 
+
 /* First Page */
+
 main {
     width: 100%;
     height: 100vh;
@@ -86,6 +90,7 @@ section {
     text-align: center;
     display: flex;
     flex-direction: column;
+    border-radius: 20px;
     justify-content: space-between;
 }
 
@@ -184,7 +189,9 @@ section {
     font-family: 'Tajawal', sans-serif;
 }
 
+
 /* Page two */
+
 .page2 {
     width: 100%;
     height: 100vh;
@@ -228,6 +235,7 @@ section {
     font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2.188rem);
 }
 
+
 /* Form Page */
 
 .form-section {
@@ -241,13 +249,12 @@ section {
 }
 
 .form-container {
-
     display: flex;
     flex-direction: column;
     padding: 15px;
     font-size: 1rem;
     background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 8px;
+    border-radius: 20px;
     text-align: end;
 }
 

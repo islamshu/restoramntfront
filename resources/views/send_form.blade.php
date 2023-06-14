@@ -43,7 +43,9 @@
                 <textarea id="details" name="note" rows="4" placeholder="الملاحظات"></textarea>
                 <button type="submit" style="    padding: 10px;
                 text-align: center;
-                margin-right: 39%;" > ارسل</button>
+                margin-right: 39%;
+                width: 22%;
+                border-radius: 11px;" > ارسال</button>
             </form>
         </div>
     </section>
