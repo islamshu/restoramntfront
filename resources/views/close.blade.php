@@ -11,7 +11,7 @@
 
       <div class="header">
         <div class="logo">
-          <img src="{{ $item->logo }}" />
+          <img src="{{ $data->logo }}" />
         </div>
       </div>
       <div class="content">
