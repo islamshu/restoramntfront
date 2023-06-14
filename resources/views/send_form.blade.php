@@ -69,8 +69,9 @@
                             icon: 'success',
                             text: 'تم الارسال بنجاح',
                         });
-                        window.location.href = "/";
-
+                        window.setTimeout(function() {
+                            window.location.href = "/";
+                        }, 5000);
 
                         }else{
                             Swal.fire({
