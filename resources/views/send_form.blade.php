@@ -26,12 +26,12 @@
 
                 <label for="phone">رقم الجوال</label>
                 <input type="text" id="phone" name="phone" required placeholder="رقم الجوال" />
-                <label for="place">مكان الحجز</label>
+                <label for="place">مكان الانتظار</label>
                 <select id="place" required name="table_type">
-                    <option value="" selected disabled>chose</option>
-                    <option value="Public">Public</option>
-                    <option value="External">External</option>
-                    <option value="Internal">Internal</option>
+                    <option value="" selected disabled>مكان الانتظار</option>
+                    <option value="Public">عام</option>
+                    <option value="External">خارجي</option>
+                    <option value="Internal">داخلي</option>
 
                 </select>
 
