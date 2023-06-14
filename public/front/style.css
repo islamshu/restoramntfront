@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Tajawal', sans-serif;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+}
+
+h2,
+h3,
+h4,
+p,
+a {
+    color: #fff;
+}
+
+/* Common Design */
+.responsive_box {
+    max-width: 500px;
+    min-width: 360px;
+}
+
+/* Common Design */
+
+/* First Page */
+main {
+    width: 100%;
+    height: 100vh;
+}
+
+section {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-image: url(./assets/bg.png);
+    background-repeat: no-repeat;
+    object-fit: cover;
+}
+
+.header {
+    position: fixed;
+    max-height: 155px;
+    min-height: 80px;
+    width: 100%;
+    inset: 0 0 auto 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    display: grid;
+    place-items: center;
+}
+
+.logo {
+    width: clamp(5rem, 3.409rem + 7.95vw, 9.375rem);
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.reservations .container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.content-box {
+    margin: auto;
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 60px 0;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.content-box .title {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 750;
+    font-size: 28px;
+    text-shadow: rgba(0, 0, 0, 0.4) 0px 4px 5px;
+}
+
+.content-box .sub_title h3 {
+    font-size: 15px;
+    font-family: 'Tajawal', sans-serif;
+}
+
+.content-box .sub_title h3:first-child {
+    margin-bottom: 5px;
+}
+
+.content-box .btn {
+    display: block;
+    margin: auto;
+    width: 190px;
+    padding: 8px 10px;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #EF7D62;
+    background-color: #000;
+    font-family: 'Tajawal', sans-serif;
+    letter-spacing: 2px;
+}
+
+.content-box .btn:first-child {
+    margin-bottom: 20px;
+}
+
+.content-box .btn:hover {
+    color: #009F4F;
+}
+
+.social_icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social_icons .icon_wrapper {
+    display: grid;
+    place-items: center;
+    background-color: #000;
+    padding: 6px;
+}
+
+.social_icons .icon_wrapper:hover .icon {
+    fill: #009F4F;
+}
+
+.social_icons .icon {
+    width: 33px;
+    height: 33px;
+    fill: #EF7D62;
+    cursor: pointer;
+}
+
+.social_icons .icon svg {
+    width: 33px;
+    height: 33px;
+}
+
+.time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.time span {
+    display: block;
+}
+
+.time .icon {
+    width: 28px;
+    height: 28px;
+}
+
+.time .icon svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.time .the_time {
+    font-weight: 600;
+    font-family: 'Tajawal', sans-serif;
+}
+
+/* Page two */
+.page2 {
+    width: 100%;
+    height: 100vh;
+    background-image: url(./assets/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 10%;
+    object-fit: cover;
+    padding-top: 40px;
+    padding-inline: 10px;
+}
+
+.page2 .header {
+    position: relative;
+    width: 100%;
+    background-color: rgba(194, 194, 194, 0.7);
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 50vw;
+}
+
+.page2 .content {
+    padding: 20px;
+    background-color: rgba(194, 194, 194, 0.7);
+    text-align: center;
+    border-radius: 20px;
+}
+
+.page2 .content .title {
+    border-bottom: 1px solid #fff;
+    padding: 10px 0;
+    font-weight: 500;
+    font-size: 20px;
+    color: #000;
+}
+
+.page2 .content .sub_title {
+    color: #000;
+    font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2.188rem);
+}
+
+/* Form Page */
+
+.form-section {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-image: url(./assets/bg.png);
+    background-repeat: no-repeat;
+    object-fit: cover;
+}
+
+.form-container {
+
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    text-align: end;
+}
+
+form {
+    width: 100%;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    width: 100%;
+    text-align: end;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"],
+.form-container select {
+    margin-bottom: 8px;
+}
+
+.form-container textarea {
+    resize: none;
+}
