@@ -67,9 +67,10 @@
 
                             Swal.fire({
                             icon: 'success',
-                            title: 'Oops...',
                             text: 'تم الارسال بنجاح',
                         });
+                        window.location.href = "/";
+
 
                         }else{
                             Swal.fire({
