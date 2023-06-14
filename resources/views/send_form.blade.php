@@ -14,7 +14,7 @@
         <div class="header">
             <div class="logo">
                 <a href="/">
-                <img src="{{ asset('front/assets/logo.png') }}" />
+                <img src="{{ $data->logo }}" />
                 </a>
             </div>
         </div>
