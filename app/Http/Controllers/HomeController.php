@@ -39,8 +39,7 @@ class HomeController extends Controller
             'note' => $request->note,
             'place_type' => $request->table_type,
         ]);
-
-        // Process the response
+        dd($response->json());
         $statusCode = $response->status();
         $responseData = $response->json();
         dd($responseData);
