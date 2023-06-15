@@ -43,6 +43,7 @@ class HomeController extends Controller
         // Process the response
         $statusCode = $response->status();
         $responseData = $response->json();
+        dd($responseData);
         if($responseData['success'] == true){
             return response()->json(['status' => 'success']);
 
