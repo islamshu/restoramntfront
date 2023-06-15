@@ -40,7 +40,7 @@ class HomeController extends Controller
             'place_type' => $request->table_type,
         ]);
        
-        dd($response->body());
+        $responseData = $response->json();
         if($responseData['success'] == true){
             return response()->json(['status' => 'success']);
 
