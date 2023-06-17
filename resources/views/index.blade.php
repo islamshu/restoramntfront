@@ -10,10 +10,13 @@
 
 <body>
     <main>
+        
         <section class="reservations" style="    background-image: url({{ $data->background }});">
+    
             <div class="header">
                 <div class="logo">
                     <img src="{{ $data->logo }}" />
+
                 </div>
             </div>
             <div class="container">
@@ -101,7 +104,13 @@
                             </svg>
                         </span>
                         <span class="the_time">From  {{ $data->start_at }} to {{ $data->end_at }}</span>
+
                     </div>
+                    <div>
+                        <img src="{{ asset('front/qr_code.png') }}" width="100" height="100" alt="">
+
+                    </div>
+
                 </div>
             </div>
         </section>
