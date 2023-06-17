@@ -72,7 +72,7 @@
                             text: 'تم الارسال بنجاح',
                         });
                         window.setTimeout(function() {
-                            window.location.href = "/";
+                            window.location.href = "/waiting-list";
                         }, 2000);
 
                         }else{
