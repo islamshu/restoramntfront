@@ -24,7 +24,7 @@
 
                     </div>
                     <div>
-                        <a href="{{ route('send_form') }}" target="_blank" class="btn">waiting list</a>
+                        <a href="{{ route('send_form') }}"  class="btn">waiting list</a>
                         <a href="{{ $data->menu_url }}" class="btn">  Digital Menu</a>
                     </div>
 
