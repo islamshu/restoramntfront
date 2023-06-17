@@ -106,10 +106,7 @@
                         <span class="the_time">From  {{ $data->start_at }} to {{ $data->end_at }}</span>
 
                     </div>
-                    <div>
-                        <img src="{{ asset('waiting-list/front/qr_code.png') }}" width="100" height="100" alt="">
-
-                    </div>
+                    
 
                 </div>
             </div>
