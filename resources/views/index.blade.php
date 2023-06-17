@@ -107,7 +107,7 @@
 
                     </div>
                     <div>
-                        <img src="{{ asset('front/qr_code.png') }}" width="100" height="100" alt="">
+                        <img src="{{ asset('waiting-list/front/qr_code.png') }}" width="100" height="100" alt="">
 
                     </div>
 
