@@ -115,6 +115,11 @@
         $(document).ready(function() {
             const urlParams = new URLSearchParams(window.location.search);
             const param_x = urlParams.get('code');
+            if(param_x == null ){
+                alert('rr');
+            }else{
+                alert('22');
+            }
             alert(param_x);
                     function startUpdates(orderId) {
                         var intervalId = setInterval(function() {
