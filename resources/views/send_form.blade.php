@@ -98,7 +98,7 @@
 
             function startUpdates(orderId) {
                 setInterval(function() {
-                    $.ajax({
+                    let XHRToBeAborted = $.ajax({
                         url: 'https://dashboard.primecut.me/api/get_status/' + orderId ,
                         method: 'GET',
                         success: function(response) {
@@ -107,6 +107,7 @@
 
                             if (response.status ==1 ) {
                                 showNotificationPopup('Order Accepted');
+                                XHRToBeAborted.abort();
                             }
                         },
                         error: function() {
