@@ -87,7 +87,7 @@
                                 icon: 'success',
                                 text: 'تم الارسال بنجاح',
                             });
-                            let url ="https://primecut.me/waiting-list?code="+orderId;
+                            let url ="https://primecut.me/waiting-list?code="+response.orderId;
                             window.location.replace(url);
 
                             // startUpdates(response.orderId);
