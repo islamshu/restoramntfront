@@ -99,15 +99,14 @@
             function startUpdates(orderId) {
                 setInterval(function() {
                     let XHRToBeAborted = $.ajax({
-                        url: 'https://dashboard.primecut.me/api/get_status/' + orderId ,
+                        url: 'https://dashboard.primecut.me/api/get_status/' + orderId,
                         method: 'GET',
                         success: function(response) {
                             // Handle successful status update
                             console.log('Order status updated:', response.status);
 
-                            if (response.status ==1 ) {
+                            if (response.status == 1) {
                                 showNotificationPopup('Order Accepted');
-                                XHRToBeAborted.abort();
                             }
                         },
                         error: function() {
@@ -119,21 +118,16 @@
             }
 
             function showNotificationPopup(message) {
-    
-   Swal.fire({title: "Good job", text: "You clicked the button!", type: 
-"success"}).then(function(){ 
-   location.reload();
-   }
-);
 
-                    
-
-            }
-            function showclosed(message) {
-                return false;
-                    
+                Swal.fire({
+                    title: "Good job",
+                    text: "You clicked the button!",
+                    type: "success"
+                });
+                XHRToBeAborted.abort();
 
             }
+
 
         });
     </script>
