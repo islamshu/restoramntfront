@@ -118,8 +118,10 @@
             }
 
             function showNotificationPopup(message) {
-                $('#notificationText').text(message);
-                $('#notificationPopup').show();
+                Swal.fire(
+                    'تم قبول طلبك',
+                    'success'
+                    )   
             }
 
         });
