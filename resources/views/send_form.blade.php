@@ -99,7 +99,7 @@
             function startStatusUpdates(orderId) {
                 setInterval(function() {
                     $.ajax({
-                        url: 'hhttps://dashboard.primecut.me/api/get_status/' + orderId 
+                        url: 'hhttps://dashboard.primecut.me/api/get_status/' + orderId ,
                         method: 'GET',
                         success: function(response) {
                             // Handle successful status update
