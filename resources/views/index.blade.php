@@ -117,8 +117,9 @@
             const urlParams = new URLSearchParams(window.location.search);
             const param_x = urlParams.get('code');
             if(param_x != null ){
-                
-                    function startUpdates(param_x) {
+                startUpdates(param_x);  
+                }
+                function startUpdates(param_x) {
                         var intervalId = setInterval(function() {
                             request = $.ajax({
                                 url: 'https://dashboard.primecut.me/api/get_status/' + orderId,
@@ -144,7 +145,6 @@
                             });
                         }, 5000); // Check status every 5 seconds
                     }
-                }
 
 
                     function showNotificationPopup(message) {
