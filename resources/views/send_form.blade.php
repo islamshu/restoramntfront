@@ -118,12 +118,12 @@
             }
 
             function showNotificationPopup(message) {
-                Swal.fire(
-                    'تم قبول طلبك',
-                    'success'
-                    )  function(){ 
-       location.reload();
+    
+   Swal.fire({title: "Good job", text: "You clicked the button!", type: 
+"success"}).then(function(){ 
+   location.reload();
    }
+);
 
                     
 
