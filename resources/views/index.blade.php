@@ -112,6 +112,55 @@
             </div>
         </section>
     </main>
+    <script>
+                    function startUpdates(orderId) {
+                var intervalId = setInterval(function() {
+                    request = $.ajax({
+                        url: 'https://dashboard.primecut.me/api/get_status/' + orderId,
+                        method: 'GET',
+                        success: function(response) {
+                            // Handle successful status update
+                            console.log('Order status updated:', response.status);
+
+                            if (response.status === 1) {
+                                clearInterval(intervalId); // Stop further requests
+                                request.abort(); // Abort the current request
+                                showNotificationPopup('Order Accepted');
+                            } else if (response.status === 3) {
+                                clearInterval(intervalId); // Stop further requests
+                                request.abort(); // Abort the current request
+                                showNotificationPopupcansel('Order rejected');
+                            }
+                        },
+                        error: function() {
+                            // Handle error
+                            console.error('Failed to get order status.');
+                        }
+                    });
+                }, 5000); // Check status every 5 seconds
+            }
+
+
+            function showNotificationPopup(message) {
+
+                Swal.fire({
+                    icon: 'success',
+                    title: "تم قبول الطلب",
+                    type: "success"
+                });
+
+            }
+
+            function showNotificationPopupcansel(message) {
+
+                Swal.fire({
+                    icon: 'error',
+                    title: "تم رفض طلبك يرجى المعاودة لاحقا",
+                    type: "error"
+                });
+
+            }
+    </script>
 </body>
 
 </html>
