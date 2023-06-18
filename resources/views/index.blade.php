@@ -151,7 +151,7 @@
 
                         Swal.fire({
                             icon: 'success',
-                            title: "تم قبول الطلب",
+                            title: "تم تاكيد الحجز",
                             type: "success"
                         });
 
