@@ -71,7 +71,7 @@
                     data: formData,
                     success: function(response) {
                         if (response.status == 'success') {
-                            // $("form").trigger("reset");
+                            $("form").trigger("reset");
 
                             Swal.fire({
                                 icon: 'success',
