@@ -121,8 +121,9 @@
                 Swal.fire(
                     'تم قبول طلبك',
                     'success'
-                    )  
-                    location.reload();
+                    )  function(){ 
+       location.reload();
+   }
 
                     
 
