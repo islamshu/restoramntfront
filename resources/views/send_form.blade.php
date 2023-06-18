@@ -50,7 +50,6 @@
 
 
                 </select>
-                <input type="number" min="1" required name="guest">
 
 
                 <label for="details">الملاحظات</label>
