@@ -106,6 +106,7 @@
                             console.log('Order status updated:', response.status);
 
                             if (response.status ==1 ) {
+                                clearInterval(intervalId); // Stop sending further requests
                                 showNotificationPopup('Order Accepted');
                             }
                         },
