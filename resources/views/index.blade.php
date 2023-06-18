@@ -10,9 +10,9 @@
 
 <body>
     <main>
-        
+
         <section class="reservations" style="    background-image: url({{ $data->background }});">
-    
+
             <div class="header">
                 <div class="logo">
                     <img src="{{ $data->logo }}" />
@@ -27,13 +27,12 @@
 
                     </div>
                     <div>
-                        <a href="{{ route('send_form') }}"  class="btn">waiting list</a>
-                        <a href="{{ $data->menu_url }}" class="btn">  Digital Menu</a>
+                        <a href="{{ route('send_form') }}" class="btn">waiting list</a>
+                        <a href="{{ $data->menu_url }}" class="btn"> Digital Menu</a>
                     </div>
 
                     <div class="social_icons">
                         @if ($data->instagram != null)
-
                             <div class="icon_wrapper">
                                 <a href="{{ $data->instagram }}">
                                     <span class="icon">
@@ -51,8 +50,7 @@
                             </div>
                         @endif
                         @if ($data->facebook != null)
-
-                        <div class="icon_wrapper">
+                            <div class="icon_wrapper">
                                 <a href="{{ $data->facebook }}">
                                     <span class="icon">
                                         <svg data-bbox="0 0 371.168 511.2" viewBox="0 0 371.2 511"
@@ -65,12 +63,11 @@
                                         </svg>
                                     </span>
                                 </a>
-                        </div>
+                            </div>
                         @endif
 
                         @if ($data->map != null)
-
-                        <div class="icon_wrapper">
+                            <div class="icon_wrapper">
                                 <a href="{{ $data->map }}">
                                     <span class="icon">
                                         <svg data-bbox="34 20 132 160" viewBox="0 0 200 200" height="200"
@@ -86,9 +83,9 @@
                                         </svg>
                                     </span>
                                 </a>
-                        </div>
+                            </div>
                         @endif
-                        
+
 
                     </div>
                     <div class="time">
@@ -103,63 +100,68 @@
                                 </g>
                             </svg>
                         </span>
-                        <span class="the_time">From  {{ $data->start_at }} to {{ $data->end_at }}</span>
+                        <span class="the_time">From {{ $data->start_at }} to {{ $data->end_at }}</span>
 
                     </div>
-                    
+
 
                 </div>
             </div>
         </section>
     </main>
     <script>
+        $(document).ready(function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const param_x = urlParams.get('code');
+            alert(param_x);
                     function startUpdates(orderId) {
-                var intervalId = setInterval(function() {
-                    request = $.ajax({
-                        url: 'https://dashboard.primecut.me/api/get_status/' + orderId,
-                        method: 'GET',
-                        success: function(response) {
-                            // Handle successful status update
-                            console.log('Order status updated:', response.status);
+                        var intervalId = setInterval(function() {
+                            request = $.ajax({
+                                url: 'https://dashboard.primecut.me/api/get_status/' + orderId,
+                                method: 'GET',
+                                success: function(response) {
+                                    // Handle successful status update
+                                    console.log('Order status updated:', response.status);
 
-                            if (response.status === 1) {
-                                clearInterval(intervalId); // Stop further requests
-                                request.abort(); // Abort the current request
-                                showNotificationPopup('Order Accepted');
-                            } else if (response.status === 3) {
-                                clearInterval(intervalId); // Stop further requests
-                                request.abort(); // Abort the current request
-                                showNotificationPopupcansel('Order rejected');
-                            }
-                        },
-                        error: function() {
-                            // Handle error
-                            console.error('Failed to get order status.');
-                        }
-                    });
-                }, 5000); // Check status every 5 seconds
-            }
+                                    if (response.status === 1) {
+                                        clearInterval(intervalId); // Stop further requests
+                                        request.abort(); // Abort the current request
+                                        showNotificationPopup('Order Accepted');
+                                    } else if (response.status === 3) {
+                                        clearInterval(intervalId); // Stop further requests
+                                        request.abort(); // Abort the current request
+                                        showNotificationPopupcansel('Order rejected');
+                                    }
+                                },
+                                error: function() {
+                                    // Handle error
+                                    console.error('Failed to get order status.');
+                                }
+                            });
+                        }, 5000); // Check status every 5 seconds
+                    }
 
 
-            function showNotificationPopup(message) {
+                    function showNotificationPopup(message) {
 
-                Swal.fire({
-                    icon: 'success',
-                    title: "تم قبول الطلب",
-                    type: "success"
+                        Swal.fire({
+                            icon: 'success',
+                            title: "تم قبول الطلب",
+                            type: "success"
+                        });
+
+                    }
+
+                    function showNotificationPopupcansel(message) {
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: "تم رفض طلبك يرجى المعاودة لاحقا",
+                            type: "error"
+                        });
+
+                    }
                 });
-
-            }
-
-            function showNotificationPopupcansel(message) {
-
-                Swal.fire({
-                    icon: 'error',
-                    title: "تم رفض طلبك يرجى المعاودة لاحقا",
-                    type: "error"
-                });
-
-            }
     </script>
 </body>
 
