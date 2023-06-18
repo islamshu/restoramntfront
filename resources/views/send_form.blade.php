@@ -111,7 +111,7 @@
                                 clearInterval(intervalId); // Stop further requests
                                 request.abort(); // Abort the current request
                                 showNotificationPopup('Order Accepted');
-                            } else if (response.status === 1) {
+                            } else if (response.status === 3) {
                                 clearInterval(intervalId); // Stop further requests
                                 request.abort(); // Abort the current request
                                 showNotificationPopupcansel('Order rejected');
