@@ -97,18 +97,19 @@
                 });
             });
 
+
             function startUpdates(orderId) {
                 var intervalId = setInterval(function() {
-
-                setInterval(function() {
-                    let request = $.ajax({
+                    request = $.ajax({
                         url: 'https://dashboard.primecut.me/api/get_status/' + orderId,
                         method: 'GET',
                         success: function(response) {
                             // Handle successful status update
                             console.log('Order status updated:', response.status);
 
-                            if (response.status == 1) {
+                            if (response.status === 1) {
+                                clearInterval(intervalId); // Stop further requests
+                                request.abort(); // Abort the current request
                                 showNotificationPopup('Order Accepted');
                             }
                         },
@@ -118,7 +119,8 @@
                         }
                     });
                 }, 5000); // Check status every 5 seconds
-            });
+            }
+
 
             function showNotificationPopup(message) {
 
