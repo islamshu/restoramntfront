@@ -119,7 +119,7 @@
             if(param_x != null ){
                 startUpdates(param_x);  
                 }
-                function startUpdates(param_x) {
+                function startUpdates(orderId) {
                         var intervalId = setInterval(function() {
                             request = $.ajax({
                                 url: 'https://dashboard.primecut.me/api/get_status/' + orderId,
