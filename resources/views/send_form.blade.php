@@ -77,7 +77,7 @@
                                 text: 'تم الارسال بنجاح',
                             });
 
-                            startStatusUpdates(response.orderId);
+                            startUpdates(response.orderId);
 
 
                         } else {
@@ -96,10 +96,10 @@
                 });
             });
 
-            function startStatusUpdates(orderId) {
+            function startUpdates(orderId) {
                 setInterval(function() {
                     $.ajax({
-                        url: 'hhttps://dashboard.primecut.me/api/get_status/' + orderId ,
+                        url: 'https://dashboard.primecut.me/api/get_status/' + orderId ,
                         method: 'GET',
                         success: function(response) {
                             // Handle successful status update
