@@ -111,6 +111,10 @@
                                 clearInterval(intervalId); // Stop further requests
                                 request.abort(); // Abort the current request
                                 showNotificationPopup('Order Accepted');
+                            } else if (response.status === 1) {
+                                clearInterval(intervalId); // Stop further requests
+                                request.abort(); // Abort the current request
+                                showNotificationPopupcansel('Order rejected');
                             }
                         },
                         error: function() {
@@ -125,12 +129,21 @@
             function showNotificationPopup(message) {
 
                 Swal.fire({
-                    title: "Good job",
-                    text: "You clicked the button!",
+                    title: "تم قبول الطلب",
                     type: "success"
                 });
 
             }
+
+            function showNotificationPopupcansel(message) {
+
+                Swal.fire({
+                    title: "تم رفض طلبك يرجى المعاودة لاحقا",
+                    type: "error"
+                });
+
+            }
+
 
 
         });
