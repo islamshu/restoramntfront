@@ -42,7 +42,7 @@ class HomeController extends Controller
        
         $responseData = $response->json();
         if($responseData['success'] == true){
-            return response()->json(['status' => 'success']);
+            return response()->json(['status' => 'success','orderId'=>$responseData['data']['code']]);
 
         }else{
             return response()->json(['status' => 'fail']);

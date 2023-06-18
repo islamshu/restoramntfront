@@ -10,11 +10,14 @@
 
 <body>
     <section class="form-section" style="    background-image: url({{ $data->background_watting }});">
-
+        <div id="notificationPopup" style="display: none;">
+            <h2>Order Status Update</h2>
+            <p id="notificationText"></p>
+        </div>
         <div class="header">
             <div class="logo">
                 <a href="/">
-                <img src="{{ $data->logo }}" />
+                    <img src="{{ $data->logo }}" />
                 </a>
             </div>
         </div>
@@ -36,16 +39,18 @@
                 </select>
 
                 <label for="pepole_num">عدد الأشخاص</label>
-                <input type="number" min="1" required  name="guest">
-                
+                <input type="number" min="1" required name="guest">
+
 
                 <label for="details">الملاحظات</label>
                 <textarea id="details" name="note" rows="4" placeholder="الملاحظات"></textarea>
-                <button type="submit" style="    padding: 10px;
+                <button type="submit"
+                    style="    padding: 10px;
                 text-align: center;
                 margin-right: 39%;
                 width: 22%;
-                border-radius: 11px;" > ارسال</button>
+                border-radius: 11px;">
+                    ارسال</button>
             </form>
         </div>
     </section>
@@ -64,25 +69,25 @@
                     type: "POST",
                     data: formData,
                     success: function(response) {
-                        if(response.status == 'success'){
+                        if (response.status == 'success') {
                             $("form").trigger("reset");
 
                             Swal.fire({
-                            icon: 'success',
-                            text: 'تم الارسال بنجاح',
-                        });
-                        window.setTimeout(function() {
-                            window.location.href = "/waiting-list";
-                        }, 2000);
+                                icon: 'success',
+                                text: 'تم الارسال بنجاح',
+                            });
 
-                        }else{
+                            startStatusUpdates(response.orderId);
+
+
+                        } else {
                             Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'حدث خطأ ما يرجى المحاولة لاحقا',
-                        });
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'حدث خطأ ما يرجى المحاولة لاحقا',
+                            });
                         }
-                          
+
                     },
                     error: function(xhr) {
                         // Handle the error response here
@@ -90,6 +95,33 @@
                     }
                 });
             });
+
+            function startStatusUpdates(orderId) {
+                setInterval(function() {
+                    $.ajax({
+                        url: 'hhttps://dashboard.primecut.me/api/get_status/' + orderId 
+                        method: 'GET',
+                        success: function(response) {
+                            // Handle successful status update
+                            console.log('Order status updated:', response.status);
+
+                            if (response.status ==1 ) {
+                                showNotificationPopup('Order Accepted');
+                            }
+                        },
+                        error: function() {
+                            // Handle error
+                            console.error('Failed to get order status.');
+                        }
+                    });
+                }, 5000); // Check status every 5 seconds
+            }
+
+            function showNotificationPopup(message) {
+                $('#notificationText').text(message);
+                $('#notificationPopup').show();
+            }
+
         });
     </script>
 </body>
