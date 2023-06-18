@@ -110,17 +110,14 @@
         </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         $(document).ready(function() {
             const urlParams = new URLSearchParams(window.location.search);
             const param_x = urlParams.get('code');
-            if(param_x == null ){
-                alert('rr');
-            }else{
-                alert('22');
-            }
-            alert(param_x);
+            if(param_x != null ){
+                
                     function startUpdates(orderId) {
                         var intervalId = setInterval(function() {
                             request = $.ajax({
@@ -147,6 +144,7 @@
                             });
                         }, 5000); // Check status every 5 seconds
                     }
+                }
 
 
                     function showNotificationPopup(message) {
