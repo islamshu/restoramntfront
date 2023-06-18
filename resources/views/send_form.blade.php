@@ -63,8 +63,9 @@
                 e.preventDefault();
 
                 var formData = $(this).serialize();
+                var request; // Variable to store the AJAX request object
 
-                $.ajax({
+                request = $.ajax({
                     url: "{{ route('send_form_post') }}",
                     type: "POST",
                     data: formData,
@@ -97,8 +98,10 @@
             });
 
             function startUpdates(orderId) {
+                var intervalId = setInterval(function() {
+
                 setInterval(function() {
-                    let XHRToBeAborted = $.ajax({
+                    let request = $.ajax({
                         url: 'https://dashboard.primecut.me/api/get_status/' + orderId,
                         method: 'GET',
                         success: function(response) {
@@ -115,7 +118,7 @@
                         }
                     });
                 }, 5000); // Check status every 5 seconds
-            }
+            });
 
             function showNotificationPopup(message) {
 
@@ -124,7 +127,6 @@
                     text: "You clicked the button!",
                     type: "success"
                 });
-                XHRToBeAborted.abort();
 
             }
 
