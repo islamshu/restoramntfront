@@ -129,6 +129,7 @@
             function showNotificationPopup(message) {
 
                 Swal.fire({
+                    icon: 'success',
                     title: "تم قبول الطلب",
                     type: "success"
                 });
@@ -138,6 +139,7 @@
             function showNotificationPopupcansel(message) {
 
                 Swal.fire({
+                    icon: 'error',
                     title: "تم رفض طلبك يرجى المعاودة لاحقا",
                     type: "error"
                 });
