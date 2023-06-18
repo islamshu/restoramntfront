@@ -39,7 +39,7 @@
                 </select> --}}
 
                 <label for="pepole_num">عدد الأشخاص</label>
-                <select  required name="guest">
+                <select required name="guest">
                     <option value="" selected disabled>عدد الاشخاص </option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -70,43 +70,47 @@
     <script>
         $(document).ready(function() {
             $('#myForm').submit(function(e) {
-                e.preventDefault();
+                    e.preventDefault();
 
-                var formData = $(this).serialize();
-                var request; // Variable to store the AJAX request object
+                    var formData = $(this).serialize();
+                    var request; // Variable to store the AJAX request object
 
-                request = $.ajax({
-                    url: "{{ route('send_form_post') }}",
-                    type: "POST",
-                    data: formData,
-                    success: function(response) {
-                        if (response.status == 'success') {
-                            $("form").trigger("reset");
+                    request = $.ajax({
+                            url: "{{ route('send_form_post') }}",
+                            type: "POST",
+                            data: formData,
+                            success: function(response) {
+                                if (response.status == 'success') {
+                                    $("form").trigger("reset");
 
-                            Swal.fire({
-                                icon: 'success',
-                                text: 'تم الارسال بنجاح',
-                            });
-                            let url ="https://primecut.me/waiting-list?code="+response.orderId;
-                            window.location.replace(url);
+                                    Swal.fire({
+                                            icon: 'success',
+                                            text: 'تم الارسال بنجاح',
+                                        }),
+                                        function() {
+                                            let url = "https://primecut.me/waiting-list?code=" + response.orderId;
 
-                            // startUpdates(response.orderId);
+                                            window.location = url
+                                        });
+                                // window.location.replace(url);
+
+                                // startUpdates(response.orderId);
 
 
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: 'حدث خطأ ما يرجى المحاولة لاحقا',
-                            });
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'حدث خطأ ما يرجى المحاولة لاحقا',
+                                });
+                            }
+
+                        },
+                        error: function(xhr) {
+                            // Handle the error response here
+                            console.log(xhr.responseText);
                         }
-
-                    },
-                    error: function(xhr) {
-                        // Handle the error response here
-                        console.log(xhr.responseText);
-                    }
-                });
+                    });
             });
 
 
