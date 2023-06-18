@@ -86,16 +86,15 @@
                                     Swal.fire({
                                             icon: 'success',
                                             text: 'تم الارسال بنجاح',
-                                        }),
-                                        function() {
-                                            let url = "https://primecut.me/waiting-list?code=" + response.orderId;
+                                        }).then((result) => {
+                                        let url = "https://primecut.me/waiting-list?code=" + response.orderId;
+                                        window.location.replace(url);
 
-                                            window.location = url
-                                        });
-                                // window.location.replace(url);
+                                        })
 
                                 // startUpdates(response.orderId);
 
+                                // let url = "https://primecut.me/waiting-list?code=" + response.orderId;
 
                             } else {
                                 Swal.fire({
