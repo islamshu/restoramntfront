@@ -121,7 +121,14 @@
                 Swal.fire(
                     'تم قبول طلبك',
                     'success'
-                    )   
+                    )  
+                    
+
+            }
+            function showclosed(message) {
+                return false;
+                    
+
             }
 
         });
