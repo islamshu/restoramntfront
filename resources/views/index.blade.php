@@ -103,7 +103,7 @@
                                 </g>
                             </svg>
                         </span>
-                        <span class="the_time">From  {{ $data->start_at }} to {{ $data->end_at }}</span>
+                        <span class="the_time">From  {{ $data->end_at }} to {{ $data->start_at }}</span>
 
                     </div>
                     
