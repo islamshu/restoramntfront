@@ -16,7 +16,10 @@
       </div>
       <div class="content">
         <p class="sub_title">
-        {!! $data->close_message !!}
+        {!! $data->close_message !!} <br> من {{ $data->start_at }} الى {{ $data->end_at }}
+        {!! $data->close_message_en !!}
+
+
         </p>
       </div>
     </section>
