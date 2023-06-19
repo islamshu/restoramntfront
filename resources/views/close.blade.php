@@ -15,7 +15,6 @@
         </div>
       </div>
       <div class="content">
-        <h4 class="title">In Queue</h4>
         <p class="sub_title">
         {!! $data->close_message !!}
         </p>
