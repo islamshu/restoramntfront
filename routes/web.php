@@ -17,4 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/waiting-list', [HomeController::class,'fetchData'])->name('index');
 Route::get('/waiting-list/form', [HomeController::class,'send_form'])->name('send_form');
 Route::post('/waiting-list/send_form', [HomeController::class,'send_form_post'])->name('send_form_post');
-Route::get('resend_request', [HomeController::class,'resend_request'])->name('resend_request');
+Route::get('/waiting-list/resend_request', [HomeController::class,'resend_request'])->name('resend_request');
