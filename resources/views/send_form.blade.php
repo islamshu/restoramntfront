@@ -130,6 +130,33 @@
 
     <script>
         $(document).ready(function() {
+            $('#my_button').click(function(){
+                var button = $('#myButton');
+                var dataText = button.attr('data-text');
+                $.ajax({
+                            url: "{{ route('resend_request') }}",
+                            type: "get",
+                            data: {order_id =>dataText},
+                            success: function(response) {
+                                if (response.status == 'success') {
+
+                                    Swal.fire({
+                                            icon: 'success',
+                                            text: 'تم الارسال بنجاح',
+                                        });
+                                        var button = $('#my_button');
+                                        button.attr('data-text',response.orderId);
+
+
+                                        startUpdates(response.orderId);
+
+                                // let url = "https://primecut.me/waiting-list?code=" + response.orderId;
+
+                            }
+
+                        }
+                    });
+            });
             $('#myForm').submit(function(e) {
                     e.preventDefault();
 
