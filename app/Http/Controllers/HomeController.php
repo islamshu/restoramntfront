@@ -25,9 +25,9 @@ class HomeController extends Controller
         $response = $client->get('https://dashboard.primecut.me/api/all_data');
         $data = $response->getBody()->getContents();
         $dataa =  json_decode($data)->data;
-        if($dataa->is_open == 0){
-            return view('close')->with('data',$dataa);
-        }
+        // if($dataa->is_open == 0){
+        //     return view('close')->with('data',$dataa);
+        // }
         return view('send_form')->with('data',$dataa);
     }
     public function send_form_post(Request $request){
@@ -39,11 +39,9 @@ class HomeController extends Controller
             'note' => $request->note,
             'place_type' => $request->table_type,
         ]);
-       
         $responseData = $response->json();
         if($responseData['success'] == true){
             return response()->json(['status' => 'success','orderId'=>$responseData['data']['code']]);
-
         }else{
             return response()->json(['status' => 'fail']);
 

@@ -6,7 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ $data->website_title }}</title>
     <link rel="stylesheet" href="{{ asset('waiting-list/front/style.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('front/style.css') }}" /> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
+    <!-- CSS -->
+
 </head>
+<style>
+    .circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 34%;
+        height: 120px;
+        border-radius: 50%;
+        background-color: black;
+        color: #ffffff;
+        font-size: 60px;
+        font-weight: bold;
+        margin-left: 35%;
+        text-align: center;
+    }
+
+    .my-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #121913;
+        color: #ffffff;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .my-button:hover {
+        background-color: #45a049;
+    }
+
+    .my-button:focus {
+        outline: none;
+    }
+</style>
 
 <body>
     <main>
@@ -108,6 +151,27 @@
                 </div>
             </div>
         </section>
+        <div id="myModal" class="modal modal-fx-3dFlipVertical">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box" style="text-align: center">
+                    {{-- <img src="https://static.thenounproject.com/png/2931154-200.png" width="100"
+                        height="60" alt=""> --}}
+                    <h2 class="title" style="text-align: center">مرحبا يا . <span id="user_name"></span></h2>
+                    <p class="content" style="color: black">دورك </p>
+                    <h1 id="queue_number" class="circle"></h1>
+                    <br>
+                    <p class="content" style="color: black">في الطابور </p>
+
+                    <a href="{{ route('send_form') }}" class="btn btn-dark my-button">طلب دور من جديد</a>
+
+                    <a href="{{ $data->menu_url }}" class="btn btn-dark my-button">تصفح قائمة الطعام</a>
+
+
+                </div>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -116,57 +180,66 @@
         $(document).ready(function() {
             const urlParams = new URLSearchParams(window.location.search);
             const param_x = urlParams.get('code');
-            if(param_x != null ){
-                startUpdates(param_x);  
-                }
-                function startUpdates(orderId) {
-                        var intervalId = setInterval(function() {
-                            request = $.ajax({
-                                url: 'https://dashboard.primecut.me/api/get_status/' + orderId,
-                                method: 'GET',
-                                success: function(response) {
-                                    // Handle successful status update
-                                    console.log('Order status updated:', response.status);
+            if (param_x != null) {
+                startUpdates(param_x);
+            }
 
-                                    if (response.status === 1) {
-                                        clearInterval(intervalId); // Stop further requests
-                                        request.abort(); // Abort the current request
-                                        showNotificationPopup('Order Accepted');
-                                    } else if (response.status === 3) {
-                                        clearInterval(intervalId); // Stop further requests
-                                        request.abort(); // Abort the current request
-                                        showNotificationPopupcansel('Order rejected');
-                                    }
-                                },
-                                error: function() {
-                                    // Handle error
-                                    console.error('Failed to get order status.');
-                                }
-                            });
-                        }, 5000); // Check status every 5 seconds
-                    }
+            function startUpdates(orderId) {
+                var intervalId = setInterval(function() {
+                    request = $.ajax({
+                        url: 'https://dashboard.primecut.me/api/get_status/' + orderId,
+                        method: 'GET',
+                        success: function(response) {
+                            // Handle successful status update
+                            console.log('Order status updated:', response.status);
+                            $('#myModal').addClass('is-active');
+                            $('#queue_number').text(response.number_queue);
+                            $('#user_name').text(response.user_name);
 
 
-                    function showNotificationPopup(message) {
+                            if (response.status === 1) {
+                                $('#myModal').removeClass('is-active');
 
-                        Swal.fire({
-                            icon: 'success',
-                            title: "تم تاكيد الحجز",
-                            type: "success"
-                        });
+                                clearInterval(intervalId); // Stop further requests
+                                request.abort(); // Abort the current request
+                                showNotificationPopup('Order Accepted');
 
-                    }
+                            } else if (response.status === 3) {
+                                $('#myModal').removeClass('is-active');
+                                clearInterval(intervalId); // Stop further requests
+                                request.abort(); // Abort the current request
+                                showNotificationPopupcansel('Order rejected');
+                            }
+                        },
+                        error: function() {
+                            // Handle error
+                            console.error('Failed to get order status.');
+                        }
+                    });
+                }, 5000); // Check status every 5 seconds
+            }
 
-                    function showNotificationPopupcansel(message) {
 
-                        Swal.fire({
-                            icon: 'error',
-                            title: "تم رفض طلبك يرجى المعاودة لاحقا",
-                            type: "error"
-                        });
+            function showNotificationPopup(message) {
 
-                    }
+                Swal.fire({
+                    icon: 'success',
+                    title: "تم تاكيد الحجز",
+                    type: "success"
                 });
+
+            }
+
+            function showNotificationPopupcansel(message) {
+
+                Swal.fire({
+                    icon: 'error',
+                    title: "تم رفض طلبك يرجى المعاودة لاحقا",
+                    type: "error"
+                });
+
+            }
+        });
     </script>
 </body>
 
