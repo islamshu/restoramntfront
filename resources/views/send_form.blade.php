@@ -136,7 +136,7 @@
                 $.ajax({
                             url: "{{ route('resend_request') }}",
                             type: "get",
-                            data: {order_id =>dataText},
+                            data: {order_id :dataText},
                             success: function(response) {
                                 if (response.status == 'success') {
 
