@@ -11,7 +11,43 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
 </head>
+<style>
+    .circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 34%;
+        height: 120px;
+        border-radius: 50%;
+        background-color: black;
+        color: #ffffff;
+        font-size: 60px;
+        font-weight: bold;
+        margin-left: 35%;
+        text-align: center;
+    }
 
+    .my-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #121913;
+        color: #ffffff;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .my-button:hover {
+        background-color: #45a049;
+    }
+
+    .my-button:focus {
+        outline: none;
+    }
+</style>
 <body>
     <section class="form-section" style="    background-image: url({{ $data->background_watting }});">
         <div id="notificationPopup" style="display: none;">
