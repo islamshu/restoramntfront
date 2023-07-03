@@ -54,6 +54,8 @@ class HomeController extends Controller
         $response = Http::post('https://dashboard.primecut.me/api/resend_request', [
             'order_id' => $request->order_id,
         ]);
+        dd($response);
+        
         $responseData = $response->json();
         if($responseData['success'] == true){
             return response()->json(['status' => 'success','orderId'=>$responseData['data']['code']]);
