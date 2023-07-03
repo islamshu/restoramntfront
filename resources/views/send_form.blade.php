@@ -131,7 +131,7 @@
     <script>
         $(document).ready(function() {
             $('#my_button').click(function(){
-                var button = $('#myButton');
+                var button = $('#my_button');
                 var dataText = button.attr('data-text');
                 alert(dataText);
                 $.ajax({
