@@ -115,8 +115,8 @@
                     <br>
                     <p class="content" style="color: black">في الطابور </p>
 
-                    <a href="{{ route('send_form') }}" class="btn btn-dark my-button">طلب دور من جديد</a>
-
+                    {{-- <a  class="btn btn-dark my-button">طلب دور من جديد</a> --}}
+                    <button class="my-button" id="my_button">طلب دور من جديد</button>
                     <a href="{{ $data->menu_url }}" class="btn btn-dark my-button">تصفح قائمة الطعام</a>
 
 
@@ -148,7 +148,9 @@
                                             icon: 'success',
                                             text: 'تم الارسال بنجاح',
                                         });
-                                        
+                                        var button = $('#my_button');
+                                        button.attr('data-text',response.orderId);
+
 
                                 startUpdates(response.orderId);
 
