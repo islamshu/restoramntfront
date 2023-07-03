@@ -51,6 +51,7 @@ class HomeController extends Controller
 
     }
     public function resend_request(Request $request){
+        dd($request);
         $response = Http::post('https://dashboard.primecut.me/api/resend_request', [
             'order_id' => $request->order_id,
         ]);
