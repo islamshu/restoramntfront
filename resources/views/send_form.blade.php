@@ -133,9 +133,10 @@
             $('#my_button').click(function(){
                 var button = $('#myButton');
                 var dataText = button.attr('data-text');
+                alert(dataText);
                 $.ajax({
                             url: 'https://dashboard.primecut.me/api/resend/' + dataText,
-                            type: "post",
+                            type: "get",
                             success: function(response) {
                                 if (response.status == 'success') {
 
