@@ -7,7 +7,9 @@
     <title>{{ $data->website_title }}</title>
     <link rel="stylesheet" href="{{ asset('waiting-list/front/style.css') }}" />
         {{-- <link rel="stylesheet" href="{{ asset('front/style.css') }}" /> --}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
 
+        <script src="https://cdn.jsdelivr.net/npm/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
 </head>
 
 <body>
@@ -64,6 +66,27 @@
                 border-radius: 11px;">
                     ارسال</button>
             </form>
+        </div>
+        <div id="myModal" class="modal modal-fx-3dFlipVertical">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box" style="text-align: center">
+                    {{-- <img src="https://static.thenounproject.com/png/2931154-200.png" width="100"
+                        height="60" alt=""> --}}
+                    <h2 class="title" style="text-align: center">مرحبا يا . <span id="user_name"></span></h2>
+                    <p class="content" style="color: black">دورك </p>
+                    <h1 id="queue_number" class="circle"></h1>
+                    <br>
+                    <p class="content" style="color: black">في الطابور </p>
+
+                    <a href="{{ route('send_form') }}" class="btn btn-dark my-button">طلب دور من جديد</a>
+
+                    <a href="{{ $data->menu_url }}" class="btn btn-dark my-button">تصفح قائمة الطعام</a>
+
+
+                </div>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
         </div>
     </section>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
