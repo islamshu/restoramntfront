@@ -134,9 +134,8 @@
                 var button = $('#myButton');
                 var dataText = button.attr('data-text');
                 $.ajax({
-                            url: "{{ route('resend_request') }}",
-                            type: "get",
-                            data: {order_id :dataText},
+                            url: 'https://dashboard.primecut.me/api/resend/' + dataText,
+                            type: "post",
                             success: function(response) {
                                 if (response.status == 'success') {
 
