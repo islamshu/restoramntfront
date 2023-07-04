@@ -115,7 +115,8 @@
                     <br>
                     <p class="content" style="color: black">في الطابور </p>
 
-                    {{-- <a href="{{ route('send_form') }}" class="btn btn-dark my-button">طلب دور من جديد</a> --}}
+                    <button class="my-button" id="my_button" >طلب دور من جديد</button>
+                    {{-- <a href="{{ route('send_form') }}" class="btn btn-dark my-button"></a> --}}
 
                     <a href="{{ $data->menu_url }}" class="btn btn-dark my-button">تصفح قائمة الطعام</a>
 
@@ -130,6 +131,23 @@
 
     <script>
         $(document).ready(function() {
+            $('#my_button').click(function(){
+                var button = $('#my_button');
+                var dataText = button.attr('data-text');
+                $.ajax({
+                        url: 'https://dashboard.primecut.me/api/resend/' + dataText,
+                        method: 'GET',
+                        success: function(response) {
+                            if(response.status =='success'){
+                                Swal.fire({
+                                            icon: 'success',
+                                            text: 'تم طلب دور جديد بنجاح',
+                                        });
+                            }
+                        }
+                    });
+
+            });
             $('#myForm').submit(function(e) {
                     e.preventDefault();
 
@@ -149,7 +167,8 @@
                                             text: 'تم الارسال بنجاح',
                                         });
                                         
-
+                                        var button = $('#my_button');
+                                        button.attr('data-text', response.orderId);
                                 startUpdates(response.orderId);
 
                                 // let url = "https://primecut.me/waiting-list?code=" + response.orderId;
