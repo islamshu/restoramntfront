@@ -35,7 +35,7 @@ class HomeController extends Controller
         if($dataa->is_manual_close == 0){
             return view('manual_close')->with('data',$dataa);
         }
-        if($dataa->max_order >= $dataa->now_queue){
+        if($dataa->now_queue >= $dataa->max_order){
             return view('queue_close')->with('data',$dataa);
 
         }
