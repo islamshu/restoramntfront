@@ -12,6 +12,8 @@ class HomeController extends Controller
     {
         $client = new Client();
         $response = $client->get('https://dashboard.primecut.me/api/all_data');
+        // $response = $client->get('http://127.0.0.1:8000/api/all_data');
+
         $data = $response->getBody()->getContents();
 
 
@@ -23,15 +25,28 @@ class HomeController extends Controller
 
         $client = new Client();
         $response = $client->get('https://dashboard.primecut.me/api/all_data');
+        // $response = $client->get('http://127.0.0.1:8000/api/all_data');
+
         $data = $response->getBody()->getContents();
         $dataa =  json_decode($data)->data;
         if($dataa->is_open == 0){
             return view('close')->with('data',$dataa);
         }
+        if($dataa->is_manual_close == 0){
+            return view('manual_close')->with('data',$dataa);
+        }
+        if($dataa->max_order >= $dataa->now_queue){
+            return view('queue_close')->with('data',$dataa);
+
+        }
+        
+
         return view('send_form')->with('data',$dataa);
     }
     public function send_form_post(Request $request){
         $response = Http::post('https://dashboard.primecut.me/api/make_order', [
+
+        // $response = Http::post('http://127.0.0.1:8000/api/make_order', [
             'name' => $request->name,
             'phone' => $request->phone,
             'guest' => $request->guest,
