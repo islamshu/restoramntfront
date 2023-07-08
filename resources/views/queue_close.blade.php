@@ -17,6 +17,7 @@
       <div class="content">
         <p class="sub_title">
         {!! $data->close_max_message !!} <br> 
+        {!! $data->close_max_message_en !!} <br> 
 
 
         </p>

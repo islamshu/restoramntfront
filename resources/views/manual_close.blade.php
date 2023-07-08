@@ -17,6 +17,7 @@
       <div class="content">
         <p class="sub_title">
         {!! $data->manual_close_message !!}<br> 
+        {!! $data->manual_close_message_en !!}<br> 
 
 
         </p>
