@@ -144,6 +144,7 @@
                             </svg>
                         </span>
                         <span class="the_time">From {{ $data->start_at }} to {{ $data->end_at }}</span>
+                        <span class="the_time">From {{ $data->start_at_new }} to {{ $data->end_at_new }}</span>
 
                     </div>
 
