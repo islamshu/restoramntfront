@@ -16,7 +16,7 @@
       </div>
       <div class="content">
         <p class="sub_title">
-        {!! $data->close_message !!}  
+        {!! $data->close_message !!}  <br>
         
         {!! $data->close_message_en !!} <br> 
 
