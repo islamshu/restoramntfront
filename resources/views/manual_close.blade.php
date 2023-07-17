@@ -16,8 +16,8 @@
       </div>
       <div class="content">
         <p class="sub_title">
-        {!! $data->manual_close_message !!}<br> 
-        {!! $data->manual_close_message_en !!}<br> 
+        {!! $data->manual_close_message !!} <br> <span> {{ $data->start_at_new }}   - {{ $data->end_at_new }} </span> <br> <br> 
+        {!! $data->manual_close_message_en !!}  form {{ $data->start_at_new }} to {{ $data->end_at_new }}<br> 
 
 
         </p>
