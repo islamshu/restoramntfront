@@ -30,11 +30,10 @@ class HomeController extends Controller
         $data = $response->getBody()->getContents();
         $dataa =  json_decode($data)->data;
         if($dataa->is_open == 0){
-            return view('manual_close')->with('data',$dataa);
-
+            return view('close')->with('data',$dataa);
         }
         if($dataa->is_manual_close == 0){
-            return view('close')->with('data',$dataa);
+            return view('manual_close')->with('data',$dataa);
 
         }
         if($dataa->now_queue > $dataa->max_order){
