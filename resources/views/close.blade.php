@@ -16,8 +16,8 @@
       </div>
       <div class="content">
         <p class="sub_title">
-        {!! $data->close_message !!}  <br> <span> {{ $data->start_at_new }} <br>  الى {{ $data->end_at_new }} </span> <br> 
-        {{ $data->start_at_new }} {{ $data->end_at_new }} من  الى <br>
+        {!! $data->close_message !!}  <br> <span> {{ $data->start_at_new }} <br>  - {{ $data->end_at_new }} </span> <br> 
+        
         {!! $data->close_message_en !!}  form {{ $data->start_at_new }} to {{ $data->end_at_new }}<br> 
 
 
