@@ -33,13 +33,14 @@ class HomeController extends Controller
             return view('manual_close')->with('data',$dataa);
 
         }
+        if($dataa->now_queue > $dataa->max_order){
+            return view('queue_close')->with('data',$dataa);
+        }
         if($dataa->is_manual_close == 0){
             return view('close')->with('data',$dataa);
 
         }
-        if($dataa->now_queue > $dataa->max_order){
-            return view('queue_close')->with('data',$dataa);
-        }
+       
         
 
         return view('send_form')->with('data',$dataa);
