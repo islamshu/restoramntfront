@@ -94,7 +94,8 @@
 
                 <label for="details">الملاحظات</label>
                 <textarea id="details" name="note" rows="4" placeholder="الملاحظات"></textarea>
-                <button type="submit"
+                <button type="submit" 
+                id="submit_button"
                     style="    padding: 10px;
                 text-align: center;
                 margin-right: 39%;
@@ -161,7 +162,7 @@
                             success: function(response) {
                                 if (response.status == 'success') {
                                     $("form").trigger("reset");
-
+                                    $('#submit_button').prop('disabled', true);
                                     Swal.fire({
                                             icon: 'success',
                                             text: 'تم الارسال بنجاح',
@@ -173,11 +174,11 @@
 
                                 // let url = "https://primecut.me/waiting-list?code=" + response.orderId;
 
-                            } else {
+                            } else  {
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Oops...',
-                                    text: 'حدث خطأ ما يرجى المحاولة لاحقا',
+                                    text: response.message,
                                 });
                             }
 

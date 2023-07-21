@@ -45,6 +45,16 @@ class HomeController extends Controller
         return view('send_form')->with('data',$dataa);
     }
     public function send_form_post(Request $request){
+
+        $client = new Client();
+        $response = $client->get('https://dashboard.primecut.me/api/all_data');
+        // $response = $client->get('http://127.0.0.1:8000/api/all_data');
+
+        $data = $response->getBody()->getContents();
+        $dataa =  json_decode($data)->data;
+        $dataa->now_queue > $dataa->max_order;
+        return response()->json(['status' => 'fail','message'=>'تم الوصول الى الحد الاقصى يرجى المعاودة لاحقا']);
+
         $response = Http::post('https://dashboard.primecut.me/api/make_order', [
 
         // $response = Http::post('http://127.0.0.1:8000/api/make_order', [
@@ -59,7 +69,7 @@ class HomeController extends Controller
         if($responseData['success'] == true){
             return response()->json(['status' => 'success','orderId'=>$responseData['data']['code']]);
         }else{
-            return response()->json(['status' => 'fail']);
+            return response()->json(['status' => 'fail','message'=>'حدث خطأ ما يرجى المحاولة لاحقا']);
 
         }
         
