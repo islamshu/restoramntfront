@@ -67,11 +67,11 @@ class HomeController extends Controller
             'place_type' => $request->table_type,
         ]);
         $responseData = $response->json();
-        return  $responseData;
+        return $responseData['message'];
         if ($responseData['success'] == true) {
             return response()->json(['status' => 'success', 'orderId' => $responseData['data']['code']]);
         }elseif($responseData['success'] == 'error') {
-            return response()->json(['status' => 'fail', 'message' =>  $responseData['data']['message']]);
+            return response()->json(['status' => 'fail', 'message' =>$responseData['message']  ]);
         } else  {
             return response()->json(['status' => 'fail', 'message' => 'حدث خطأ ما يرجى المحاولة لاحقا']);
         }
