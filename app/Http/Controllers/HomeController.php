@@ -67,6 +67,7 @@ class HomeController extends Controller
             'place_type' => $request->table_type,
         ]);
         $responseData = $response->json();
+        return  $responseData;
         if ($responseData['success'] == true) {
             return response()->json(['status' => 'success', 'orderId' => $responseData['data']['code']]);
         }elseif($responseData['success'] == 'error') {
