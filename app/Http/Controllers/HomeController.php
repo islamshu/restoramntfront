@@ -68,7 +68,7 @@ class HomeController extends Controller
         ]);
         $responseData = $response->json();
         return $responseData;
-        if ($responseData['success'] == true) {
+        if ($responseData['code'] == 200) {
             return response()->json(['status' => 'success', 'orderId' => $responseData['data']['code']]);
         }elseif($responseData['success'] == 'error') {
             return response()->json(['status' => 'fail', 'message' =>$responseData['message']  ]);
