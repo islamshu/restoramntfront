@@ -67,7 +67,7 @@ class HomeController extends Controller
             'place_type' => $request->table_type,
         ]);
         $responseData = $response->json();
-        return $responseData;
+        // return $responseData;
         if ($responseData['code'] == 200) {
             return response()->json(['status' => 'success', 'orderId' => $responseData['data']['code']]);
         }elseif($responseData['success'] == 'error') {
