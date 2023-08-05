@@ -116,7 +116,7 @@
                     <br>
                     <p class="content" style="color: black">في الطابور </p>
 
-                    <button class="my-button" id="my_button" >طلب دور من جديد</button>
+                    {{-- <button class="my-button" id="my_button" >طلب دور من جديد</button> --}}
                     {{-- <a href="{{ route('send_form') }}" class="btn btn-dark my-button"></a> --}}
 
                     <a href="{{ $data->menu_url }}" class="btn btn-dark my-button">تصفح قائمة الطعام</a>
