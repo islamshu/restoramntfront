@@ -29,7 +29,7 @@ class HomeController extends Controller
 
         $data = $response->getBody()->getContents();
         $dataa =  json_decode($data)->data;
-        if ($dataa->is_emergency_close == 0) {
+        if ($dataa->is_emergency_close == 1) {
             return view('emergency_close')->with('data', $dataa);
         }
         if ($dataa->is_open == 0) {
